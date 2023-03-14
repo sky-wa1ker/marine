@@ -2,8 +2,6 @@ from http import client
 import os
 import discord
 from discord.ext import commands, tasks
-from bs4 import BeautifulSoup
-import pandas as pd
 import re
 import json
 from datetime import datetime
