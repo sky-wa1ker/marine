@@ -8,6 +8,7 @@ from datetime import datetime
 from translate import Translator
 from python_aternos import Status
 import python_aternos
+import time
 
 
 
@@ -54,6 +55,9 @@ async def minecraft(ctx):
     servs = aternos.list_servers()
     cre = servs[0]
     sur = servs[1]
+    cre.fetch()
+    time.sleep(1)
+    sur.fetch()
     status_emote = lambda x : "🟢" if x == "online" else "🔴"
     embed = discord.Embed(title="Arrgh's minecraft servers.", description=f'''
 **Creative** : {cre.status}  {status_emote(cre.status)}
