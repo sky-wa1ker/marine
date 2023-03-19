@@ -56,7 +56,7 @@ async def minecraft(ctx):
     cre = servs[0]
     sur = servs[1]
     cre.fetch()
-    time.sleep(1)
+    time.sleep(1.5)
     sur.fetch()
     status_emote = lambda x : "🟢" if x == "online" else "🔴"
     embed = discord.Embed(title="Arrgh's minecraft servers.", description=f'''
