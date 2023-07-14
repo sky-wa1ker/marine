@@ -3,16 +3,17 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
 
   build:
 
-    runs-on: python:3.10-slim
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag marine:$(date +%s)
+      env:
+        DOCKER_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
