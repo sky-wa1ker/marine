@@ -12,8 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag marine:$(date +%s)
-      env:
-        DOCKER_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+    - name: push-to-ghcr
+      uses: macbre/push-to-ghcr@v12
+      with:
+        image_name: ${{ github.repository }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
