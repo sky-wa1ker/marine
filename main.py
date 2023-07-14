@@ -21,6 +21,8 @@ token = (os.environ["DISCORD_TOKEN"])
 async def on_ready():
     game = discord.Game("with the crew.")
     await client.change_presence(status=discord.Status.online, activity=game)
+    if not up.is_running():
+        up.start()
     print('Online as {0.user}'.format(client))
 
 @client.event
@@ -44,6 +46,13 @@ async def translate(ctx, from_lang, to_lang):
     message = await ctx.channel.fetch_message(ctx.message.reference.message_id)
     translation = translator.translate(str((message.content)))
     await ctx.send(str(translation))
+
+
+
+@tasks.loop(minutes=1)
+async def up():
+    channel = client.get_channel(520567638779232256)
+    await channel.send("<@343397899369054219> hi I am up.")
 
 
 
